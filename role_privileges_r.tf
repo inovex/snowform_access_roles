@@ -52,10 +52,10 @@ locals {
         for scope in ["all", "future"] :
         "${schema_key}_${replace(lower(object_type), " ", "_")}_${scope}" => {
           schema_name = schema.name
-          object_type     = object_type
-          privileges      = config.privileges
-          prefix          = config.prefix
-          scope           = scope
+          object_type = object_type
+          privileges  = config.privileges
+          prefix      = config.prefix
+          scope       = scope
         }
       }
     ]...)
