@@ -1,4 +1,4 @@
-name: SnowForm Terraform Module GitHub Actions
+name: SnowForm Workflow
 run-name: ${{ github.actor }} is testing updates for a SnowForm Terraform Module 🚀
 on: [push]
 
