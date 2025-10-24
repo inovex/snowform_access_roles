@@ -57,6 +57,9 @@ jobs:
         with:
           tofu_version: 1.9.0
 
+      - name: OpenTofu init
+        run: tofu init
+
       - name: Run OpenTofu Tests
         run: tofu test
 
