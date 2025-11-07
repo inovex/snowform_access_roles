@@ -36,7 +36,7 @@ locals {
       prefix     = "read"
     }
     "DYNAMIC TABLES" = {
-      privileges = ["SELECT", "REFERENCES", "MONITOR"]
+      privileges = ["SELECT", "MONITOR"]
       prefix     = "read"
     }
     "TASKS" = {

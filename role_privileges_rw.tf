@@ -4,19 +4,19 @@
 locals {
   write_object_privileges = {
     "TABLES" = {
-      privileges = ["INSERT", "UPDATE", "DELETE", "TRUNCATE"]
+      privileges = ["SELECT", "REFERENCES", "INSERT", "UPDATE", "DELETE", "TRUNCATE"]
       prefix     = "write"
     }
     "STAGES" = {
-      privileges = ["WRITE"]
+      privileges = ["USAGE", "READ", "WRITE"]
       prefix     = "write"
     }
     "TASKS" = {
-      privileges = ["OPERATE"]
+      privileges = ["MONITOR", "OPERATE"]
       prefix     = "write"
     }
     "DYNAMIC TABLES" = {
-      privileges = ["OPERATE"]
+      privileges = ["SELECT", "MONITOR", "OPERATE"]
       prefix     = "write"
     }
   }
