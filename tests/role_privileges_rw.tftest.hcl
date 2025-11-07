@@ -16,6 +16,7 @@ mock_provider "snowflake" {
   alias = "mockprovider"
 }
 
+
 run "test_privileges_of_role_rw" {
   command = plan
 
@@ -32,7 +33,7 @@ run "test_privileges_of_role_rw" {
   }
 
   assert {
-    condition     = snowflake_grant_privileges_to_account_role.grant_write_privileges_rw["RAW_tables_all"].privileges == toset(["INSERT", "UPDATE", "DELETE", "TRUNCATE"])
+    condition     = snowflake_grant_privileges_to_account_role.grant_write_privileges_rw["RAW_tables_all"].privileges == toset(["SELECT", "REFERENCES", "INSERT", "UPDATE", "DELETE", "TRUNCATE"])
     error_message = "Privileges are incorrect for tables (all)"
   }
 
@@ -53,7 +54,7 @@ run "test_privileges_of_role_rw" {
   }
 
   assert {
-    condition     = snowflake_grant_privileges_to_account_role.grant_write_privileges_rw["RAW_tables_future"].privileges == toset(["INSERT", "UPDATE", "DELETE", "TRUNCATE"])
+    condition     = snowflake_grant_privileges_to_account_role.grant_write_privileges_rw["RAW_tables_future"].privileges == toset(["SELECT", "REFERENCES", "INSERT", "UPDATE", "DELETE", "TRUNCATE"])
     error_message = "Privileges are incorrect for tables (future)"
   }
 
@@ -74,7 +75,7 @@ run "test_privileges_of_role_rw" {
   }
 
   assert {
-    condition     = snowflake_grant_privileges_to_account_role.grant_write_privileges_rw["RAW_stages_all"].privileges == toset(["WRITE"])
+    condition     = snowflake_grant_privileges_to_account_role.grant_write_privileges_rw["RAW_stages_all"].privileges == toset(["USAGE", "READ", "WRITE"])
     error_message = "Privileges are incorrect for stages (all)"
   }
 
@@ -95,7 +96,7 @@ run "test_privileges_of_role_rw" {
   }
 
   assert {
-    condition     = snowflake_grant_privileges_to_account_role.grant_write_privileges_rw["RAW_stages_future"].privileges == toset(["WRITE"])
+    condition     = snowflake_grant_privileges_to_account_role.grant_write_privileges_rw["RAW_stages_future"].privileges == toset(["USAGE", "READ", "WRITE"])
     error_message = "Privileges are incorrect for stages (future)"
   }
 
@@ -116,7 +117,7 @@ run "test_privileges_of_role_rw" {
   }
 
   assert {
-    condition     = snowflake_grant_privileges_to_account_role.grant_write_privileges_rw["RAW_tasks_all"].privileges == toset(["OPERATE"])
+    condition     = snowflake_grant_privileges_to_account_role.grant_write_privileges_rw["RAW_tasks_all"].privileges == toset(["MONITOR", "OPERATE"])
     error_message = "Privileges are incorrect for tasks (all)"
   }
 
@@ -137,7 +138,7 @@ run "test_privileges_of_role_rw" {
   }
 
   assert {
-    condition     = snowflake_grant_privileges_to_account_role.grant_write_privileges_rw["RAW_tasks_future"].privileges == toset(["OPERATE"])
+    condition     = snowflake_grant_privileges_to_account_role.grant_write_privileges_rw["RAW_tasks_future"].privileges == toset(["MONITOR", "OPERATE"])
     error_message = "Privileges are incorrect for tasks (future)"
   }
 
@@ -158,7 +159,7 @@ run "test_privileges_of_role_rw" {
   }
 
   assert {
-    condition     = snowflake_grant_privileges_to_account_role.grant_write_privileges_rw["RAW_dynamic_tables_all"].privileges == toset(["OPERATE"])
+    condition     = snowflake_grant_privileges_to_account_role.grant_write_privileges_rw["RAW_dynamic_tables_all"].privileges == toset(["SELECT", "MONITOR", "OPERATE"])
     error_message = "Privileges are incorrect for dynamic tables (all)"
   }
 
@@ -179,7 +180,7 @@ run "test_privileges_of_role_rw" {
   }
 
   assert {
-    condition     = snowflake_grant_privileges_to_account_role.grant_write_privileges_rw["RAW_dynamic_tables_future"].privileges == toset(["OPERATE"])
+    condition     = snowflake_grant_privileges_to_account_role.grant_write_privileges_rw["RAW_dynamic_tables_future"].privileges == toset(["SELECT", "MONITOR", "OPERATE"])
     error_message = "Privileges are incorrect for dynamic tables (future)"
   }
 

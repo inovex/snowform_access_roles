@@ -368,7 +368,7 @@ run "test_privileges_of_role_r" {
   }
 
   assert {
-    condition     = snowflake_grant_privileges_to_account_role.grant_read_privileges_r["RAW_dynamic_tables_all"].privileges == toset(["SELECT", "REFERENCES", "MONITOR"])
+    condition     = snowflake_grant_privileges_to_account_role.grant_read_privileges_r["RAW_dynamic_tables_all"].privileges == toset(["SELECT", "MONITOR"])
     error_message = "Privileges are incorrect for dynamic tables (all)"
   }
 
@@ -389,7 +389,7 @@ run "test_privileges_of_role_r" {
   }
 
   assert {
-    condition     = snowflake_grant_privileges_to_account_role.grant_read_privileges_r["RAW_dynamic_tables_future"].privileges == toset(["SELECT", "REFERENCES", "MONITOR"])
+    condition     = snowflake_grant_privileges_to_account_role.grant_read_privileges_r["RAW_dynamic_tables_future"].privileges == toset(["SELECT", "MONITOR"])
     error_message = "Privileges are incorrect for dynamic tables (future)"
   }
 
