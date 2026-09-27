@@ -7,15 +7,14 @@ Implement a secure and manageable Snowflake environment by following the [offici
 
 This structure ensures easier auditing and clearer separation of duties.
 
-For a detailed rationale and a complete template for your snowflake account, plese refer to [SnowForm Documentation](https://github.com/inovex/snowform_docs).
+For a detailed rationale and a complete template for your snowflake account, please refer to [SnowForm Documentation](https://github.com/inovex/snowform_docs).
 
 ## Usage
 
-```
+```hcl
 module "access_roles" {
-   source  = "https://github.com/inovex/snowform_access_roles/local"
-   version = "0.0.X"
-   db      = snowflake_database.yor_deployed_db
+   source  = "github.com/inovex/snowform_access_roles.git?ref=0.0.2"
+   db      = snowflake_database.your_deployed_db
    schemas = [
     {
       name = "YOUR_SCHEMA_1"
